@@ -1,3 +1,17 @@
 spring:
   application:
     name: stocksy
+
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/FREEPDB1
+    username: SYSTEM
+    password: 123456
+    driver-class-name: oracle.jdbc.OracleDriver
+    jpa:
+      database-platform: org.hibernate.dialect.OracleDialect
+      hibernate:
+        ddl-auto: update
+
+#logging:
+#  level:
+#    org.springframework: DEBUG

@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>stocksy</name>
-	<description>API StockSy para gerenciamento de Produtos e Matéria-prima</description>
+	<description>API StockSy para gestão de Produtos e Matéria-prima</description>
 	<url>https://github.com/vek03/stocksy-api</url>
 
 	<licenses>

@@ -1,4 +1,4 @@
-package com.stocksy.stocksy;
+package com.stocksy.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
