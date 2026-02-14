@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.stocksy</groupId>
+	<artifactId>stocksy</artifactId>
+	<version>v1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>stocksy</name>
+	<description>API StockSy para gerenciamento de Produtos e Matéria-prima</description>
+	<url>https://github.com/vek03/stocksy-api</url>
+
+	<licenses>
+		<license>
+			<name>GPL-3.0</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>devVekRest</id>
+			<name>Victor Novaes Cardoso (Vek)</name>
+			<email>victorncardoso1912@gmail.com</email>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>domain</module>
+		<module>spring</module>
+	</modules>
+
+	<properties>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.projectKey>stocksy-api</sonar.projectKey>
+		<sonar.organization>stocksy</sonar.organization>
+	</properties>
+</project>
