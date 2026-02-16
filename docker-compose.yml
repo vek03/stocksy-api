@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   oracle-db:
     image: gvenzl/oracle-free:latest
     container_name: oracle-db
@@ -16,6 +15,67 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  redis:
+    image: redis:latest
+    hostname: redis
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  opensearch:
+    image: opensearchproject/opensearch:2.4.0
+    hostname: opensearch
+    container_name: opensearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    environment:
+      - TZ=America/Sao_Paulo
+      - discovery.type=single-node
+      - plugins.security.disabled=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9200" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  graylog:
+    image: graylog/graylog:5.1.5
+    hostname: graylog
+    container_name: graylog
+    restart: on-failure
+    ports:
+      - "9000:9000"
+      - "12201:12201/udp"
+    environment:
+      TZ: America/Sao_Paulo
+      GRAYLOG_ROOT_TIMEZONE: America/Sao_Paulo
+      GRAYLOG_PASSWORD_SECRET: "f62c92ac283e4f1f969ad5e71d4c7b2e11e9bdbf5e193ae7bb4e9b4e1e956e437c98a43cd624c5ea8a2c97b9463f96e8"
+      GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+      GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
+      GRAYLOG_HTTP_EXTERNAL_URI: "http://localhost:9000/"
+      GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+      GRAYLOG_ELASTICSEARCH_HOSTS: "http://opensearch:9200"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      opensearch:
+        condition: service_healthy
 
 #  app:
 #    build: .
