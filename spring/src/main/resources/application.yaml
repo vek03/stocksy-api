@@ -1,14 +1,14 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:-8080}
 
 spring:
   application:
     name: stocksy
 
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/FREEPDB1
-    username: SYSTEM
-    password: 123456
+    url:  ${ORACLE_URL:-jdbc:oracle:thin:@localhost:1521/FREEPDB1}
+    username: ${ORACLE_USERNAME:-SYSTEM}
+    password: ${ORACLE_PASSWORD:-123456}
     driver-class-name: oracle.jdbc.OracleDriver
     jpa:
       database-platform: org.hibernate.dialect.OracleDialect
@@ -16,8 +16,8 @@ spring:
         ddl-auto: update
 
   redis:
-    host: localhost
-    port: 6379
+    host: ${REDIS_HOST:-localhost}
+    port: ${REDIS_PORT:-6379}
 
   cache:
     type: redis
