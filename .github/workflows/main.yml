@@ -1,0 +1,21 @@
+name: StockSy API Workflow
+
+on:
+  push:
+    tags: ['v*', 'v*.*', 'v*.*.*']
+  workflow_dispatch:
+
+jobs:
+  main-template:
+    uses: VekRest/workflow-templates/.github/workflows/main-template.yml@main
+    with:
+      sonar_project_key: stocksy-api
+      sonar_org: vek03
+      dockerhub_repo: stocksy-api
+      maven_group: com.stocksy
+      maven_artifact: stocksy-api
+    secrets:
+      sonar_token: ${{ secrets.SONAR_TOKEN }}
+      dockerhub_user: ${{ secrets.DOCKERHUB_USER }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      release_token: ${{ secrets.RELEASE_TOKEN }}
