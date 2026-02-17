@@ -1,9 +1,8 @@
 package com.stocksy.domain.entities;
 
-import java.math.BigDecimal;
-
 public record CompositionItem (
+    String id,
     Product product,
     RawMaterial rawMaterial,
-    BigDecimal quantity
+    int quantity
 ) {}
