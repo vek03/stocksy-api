@@ -8,8 +8,8 @@ services:
       - "1521:1521"
     environment:
       ORACLE_PASSWORD: 123456
-      APP_USER: stocksy
-      APP_USER_PASSWORD: stocksy
+#      APP_USER: stocksy
+#      APP_USER_PASSWORD: stocksy
     volumes:
       - oracle-data:/opt/oracle/oradata
     healthcheck:
