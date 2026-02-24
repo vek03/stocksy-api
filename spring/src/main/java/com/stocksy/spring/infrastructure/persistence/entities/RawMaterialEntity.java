@@ -3,7 +3,7 @@ package com.stocksy.spring.infrastructure.persistence.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "RAW_MATERIAL")
+@Table(name = "RAW_MATERIALS")
 public class RawMaterialEntity {
     @Id
     @Column(length = 36)

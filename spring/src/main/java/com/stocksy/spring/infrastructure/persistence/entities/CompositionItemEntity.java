@@ -3,7 +3,7 @@ package com.stocksy.spring.infrastructure.persistence.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "COMPOSITION_ITEM")
+@Table(name = "COMPOSITION_ITEMS")
 public class CompositionItemEntity {
     @Id
     @Column(length = 36)
@@ -14,7 +14,7 @@ public class CompositionItemEntity {
     public ProductEntity product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RAY_MATERIAL_ID", nullable = false)
+    @JoinColumn(name = "RAW_MATERIAL_ID", nullable = false)
     public RawMaterialEntity rawMaterial;
 
     @Column(name = "QUANTITY", nullable = false)
