@@ -14,7 +14,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.OracleDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
 
   redis:
     host: ${REDIS_HOST:localhost}
@@ -24,6 +24,17 @@ spring:
     type: redis
     redis:
       cache-null-values: false
+
+management:
+  endpoints:
+    web:
+      exposure.include: health,info
+      base-path: /vekrest/vekclient/actuator
+
+    health:
+      show-details: never
+
+  endpoint.health.show-details: never
 
 #logging:
 #  level:
