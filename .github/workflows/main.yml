@@ -20,6 +20,7 @@ jobs:
       maven_group: com.stocksy
       maven_artifact: stocksy-api
     secrets:
+      owner-type: users
       sonar_token: ${{ secrets.SONAR_TOKEN }}
       dockerhub_user: ${{ secrets.DOCKERHUB_USER }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
