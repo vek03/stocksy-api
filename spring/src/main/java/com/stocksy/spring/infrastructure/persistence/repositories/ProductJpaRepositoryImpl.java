@@ -9,6 +9,8 @@ import com.stocksy.spring.infrastructure.persistence.clients.ProductJpaRepositor
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ProductJpaRepositoryImpl implements ProductRepository {
     private final ProductJpaRepositoryWithOracle repository;
@@ -20,6 +22,11 @@ public class ProductJpaRepositoryImpl implements ProductRepository {
     @Override
     public Pagination<Product> getAll(int pageNumber, int pageSize) {
         return ProductAdapter.cast(repository.findAll(Pageable.ofSize(pageSize).withPage(pageNumber)));
+    }
+
+    @Override
+    public List<Product> findAllWithComposition() {
+        return repository.findAllWithComposition().stream().map(ProductAdapter::cast).toList();
     }
 
     @Override

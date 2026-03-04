@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductJpaRepositoryWithOracle extends JpaRepository<ProductEntity, String>  {
@@ -15,4 +16,11 @@ public interface ProductJpaRepositoryWithOracle extends JpaRepository<ProductEnt
         WHERE p.id = :id
     """)
     Optional<ProductEntity> findByIdWithComposition(@Param("id") String id);
+
+    @Query("""
+        SELECT DISTINCT p FROM ProductEntity p
+        LEFT JOIN FETCH p.composition i
+        LEFT JOIN FETCH i.rawMaterial
+    """)
+    List<ProductEntity> findAllWithComposition();
 }
