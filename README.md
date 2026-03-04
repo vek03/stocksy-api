@@ -81,7 +81,7 @@ services:
       SERVER_PORT: 8080
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      ORACLE_URL: jdbc:oracle:thin:@localhost:1521/FREEPDB1
+      ORACLE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
       ORACLE_USERNAME: system
       ORACLE_PASSWORD: 123456
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
