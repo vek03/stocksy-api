@@ -14,13 +14,13 @@ jobs:
   main-template:
     uses: VekRest/workflow-templates/.github/workflows/main-template.yml@main
     with:
+      owner_type: users
       sonar_project_key: stocksy-api
       sonar_org: vek03
       dockerhub_repo: stocksy-api
       maven_group: com.stocksy
       maven_artifact: stocksy-api
     secrets:
-      owner_type: users
       sonar_token: ${{ secrets.SONAR_TOKEN }}
       dockerhub_user: ${{ secrets.DOCKERHUB_USER }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
