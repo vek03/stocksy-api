@@ -3,9 +3,6 @@
     <appender name="GRAYLOG" class="de.siegmar.logbackgelf.GelfUdpAppender">
         <graylogHost>${GRAYLOG_HOST:-localhost}</graylogHost>
         <graylogPort>${GRAYLOG_PORT:-12201}</graylogPort>
-        <hostName>STOCKSY</hostName>
-        <facility>API</facility>
-        <includeLocation>true</includeLocation>
     </appender>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
