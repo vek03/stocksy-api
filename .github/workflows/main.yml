@@ -5,6 +5,11 @@ on:
     tags: ['v*', 'v*.*', 'v*.*.*']
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 jobs:
   main-template:
     uses: VekRest/workflow-templates/.github/workflows/main-template.yml@main
