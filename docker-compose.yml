@@ -95,37 +95,37 @@ services:
       opensearch:
         condition: service_healthy
 
-  stocksy-api:
-    image: vek03/stocksy-api:latest
-    hostname: stocksy-api
-    container_name: stocksy-api
-    environment:
-      SERVER_PORT: 8080
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      ORACLE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
-      ORACLE_USERNAME: system
-      ORACLE_PASSWORD: 123456
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    ports:
-      - "8080:8080"
-    depends_on:
-      oracle-db:
-        condition: service_healthy
-      mongodb:
-        condition: service_healthy
-      opensearch:
-        condition: service_healthy
-      graylog:
-        condition: service_started
-      redis:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
-      interval: 5s
-      timeout: 15s
-      retries: 10
-      start_period: 30s
+#  stocksy-api:
+#    image: vek03/stocksy-api:latest
+#    hostname: stocksy-api
+#    container_name: stocksy-api
+#    environment:
+#      SERVER_PORT: 8080
+#      REDIS_HOST: redis
+#      REDIS_PORT: 6379
+#      ORACLE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+#      ORACLE_USERNAME: system
+#      ORACLE_PASSWORD: 123456
+#      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      oracle-db:
+#        condition: service_healthy
+#      mongodb:
+#        condition: service_healthy
+#      opensearch:
+#        condition: service_healthy
+#      graylog:
+#        condition: service_started
+#      redis:
+#        condition: service_healthy
+#    healthcheck:
+#      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+#      interval: 5s
+#      timeout: 15s
+#      retries: 10
+#      start_period: 30s
 
 volumes:
   oracle-data:
