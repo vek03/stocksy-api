@@ -37,4 +37,12 @@
 		<sonar.projectKey>stocksy-api</sonar.projectKey>
 		<sonar.organization>stocksy</sonar.organization>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/vek03/stocksy-api</url>
+		</repository>
+	</distributionManagement>
 </project>
